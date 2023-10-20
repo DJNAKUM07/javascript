@@ -7,6 +7,7 @@ console.log(typeof score2);
 let valueNumber = Number(score2);
 console.log(valueNumber);
 let temprature = null;
+console.log(temprature);
 console.log(Number(temprature)) // conversion give diff. value then actual.
 
 // "33" - 33

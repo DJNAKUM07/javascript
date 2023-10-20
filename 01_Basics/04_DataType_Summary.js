@@ -11,7 +11,9 @@ const IsLogIn = false;
 // symbol - it is use to make value unique
 
 const id = Symbol('123')
+console.log(id);
 const anotherid = Symbol('123')
+console.log(anotherid);
 console.log(id === anotherid);
 
 const bigNumber = 12345678901234567n
@@ -21,14 +23,16 @@ const bigNumber = 12345678901234567n
 // - Arrays , objects , functions
 
 const arr = ["abc" , "ced"];
+console.log(arr);
 let myobj = {
     name : "dj",
     age : 99,
 }
+console.log(myobj);
 
 const myFunction = function(){
     console.log("this is function call")
 }
 
-//console.log(myFunction());
+console.log(myFunction);
 console.log(typeof myFunction);
