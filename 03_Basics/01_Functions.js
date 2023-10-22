@@ -48,3 +48,30 @@ function loginmsg(userName){
 console.log(loginmsg("DJ"));
 console.log(loginmsg());
 console.log(loginmsg(5));
+
+// sprade | rest operator
+
+function calculatePrice(...num1){ // rest operator
+    return num1;
+}
+
+console.log(calculatePrice(100,200));
+console.log(calculatePrice(24,34,79));
+
+// passs object in function - passed any number of argument in function
+
+const user = {
+    userName : "DJ",
+    price : 200
+}
+
+function handleObejct(anyObject){
+    console.log(`user name is ${anyObject.userName} and price is ${anyObject.price}`);
+}
+
+handleObejct(user);
+
+handleObejct({
+    userName : "item1",
+    price : 299
+})
