@@ -1,6 +1,6 @@
 // Immediately Invoked Function Expression (IIFE)
 
-// for Ex : we want to call some function when we run iver app
+// for Ex : we want to call some function when we run our app
 
 // real ex: database connection function.
 
