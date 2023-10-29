@@ -1,59 +1,59 @@
-// const language = ["java","js","python","c#"]
+const language = ["java","js","python","c#"]
 
-// // foreach loop
-// // forEach loop take callback function as argument.
-// // callback function doesn't have function name
+// foreach loop
+// forEach loop take callback function as argument.
+// callback function doesn't have function name
 
-// language.forEach( function(val) {
-//     console.log(val);
-// })
+language.forEach( function(val) {
+    console.log(val);
+})
 
-// console.log("now using arrow function");
+console.log("now using arrow function");
 
-// language.forEach( (val) => {
-//     console.log(val);
-// })
+language.forEach( (val) => {
+    console.log(val);
+})
 
-// // we can make function any where and just pass it's reference into 
-// //  forEach
+// we can make function any where and just pass it's reference into 
+//  forEach
 
-// function printMe(val){
-//     console.log(val);
-// }
-// console.log("using reference of function");
-// language.forEach(printMe);  
-// //  printMe - this is function reference  &&   
-// //  printMe() - this is function call
+function printMe(val){
+    console.log(val);
+}
+console.log("using reference of function");
+language.forEach(printMe);  
+//  printMe - this is function reference  &&   
+//  printMe() - this is function call
 
-// // other arguments
+// other arguments
 
-// language.forEach((val,index,arr) => {
-//     console.log(val,index,arr);
-// })
+language.forEach((val,index,arr) => {
+    console.log(val,index,arr);
+})
 
-// const coding = [
-//     {
-//         languageName : "javascript",
-//         languageFileName : "js"
-//     },
-//     {
-//         languageName : "java",
-//         languageFileName : "java"
-//     },
-//     {
-//         languageName : "python",
-//         languageFileName : "py"
-//     },
-// ]
+const coding = [
+    {
+        languageName : "javascript",
+        languageFileName : "js"
+    },
+    {
+        languageName : "java",
+        languageFileName : "java"
+    },
+    {
+        languageName : "python",
+        languageFileName : "py"
+    },
+]
 
-// coding.forEach((element) => {
-//     console.log(element.languageFileName);
+coding.forEach((element) => {
+    console.log(element.languageFileName);
+});
+
+// const value = coding.forEach((element) => {
+//     return element.languageFileName;
 // });
-
-// // const value = coding.forEach((element) => {
-// //     return element.languageFileName;
-// // });
-// // console.log(value); //it's doesn't return anything - undefined - actully we can't do this why return. // bcz forEach doesn't return anything.
+// console.log(value); //it's doesn't return anything - undefined - actully we can't do this why return. // bcz forEach doesn't return anything.
 
 const myNums = [1,2,3,4,5,6,7,8,9,10]
 
@@ -131,7 +131,7 @@ console.log("use multiple maps & Filter");
 const ans = myNums.map( (num) => num * 10).map((num) => num + 1)
 console.log(ans);
 
-console.log("now i want onlt that number which is greater then 40");
+console.log("now i want only that number which is greater then 40");
 
 const ans2 = myNums
              .map( (num) => num * 10)
