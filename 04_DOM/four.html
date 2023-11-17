@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create | Edit | Remove DOM Element</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+
+<script>
+
+    // Add Ele Using Function
+    function addLang(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+    addLang('Python');
+    addLang('Java');
+
+    // using innerHTML is not optimized way bcz it's traverse through all nodes
+    function addOptmizedLang(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptmizedLang('C#');
+
+    // Edit - we want to edit second-ele
+    const secondLang = document.querySelector('li:nth-child(2)');
+    //console.log(secondLang);
+    secondLang.innerHTML = 'Edited_Python';
+
+    // this is not optimized way - innerHTML 
+    //Edit
+    const firstLang = document.querySelector('li:first-child');
+    //console.log(firstLang);
+    // secondLang.outerHTML = 'Updated JS';
+    // here we have to add in tag
+    firstLang.outerHTML = '<li>updated JS</li>';
+
+    // Edit - using another way
+    const lastLang = document.querySelector('li:last-child');
+    const newli = document.createElement('li');
+    newli.textContent = 'updated C#';
+    lastLang.replaceWith(newli);
+
+    // remove ele
+    const thirdLang = document.querySelector('li:nth-child(3)');
+    thirdLang.remove();
+</script>
+</html>
