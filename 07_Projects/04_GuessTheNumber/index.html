@@ -7,25 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Number Guessing Game</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body style="background-color:#212121; color:#fff;">
+<body>
+    <div class="celebration">
+        <img src="https://via.placeholder.com/30.png" alt="confetti">
+        <img src="https://via.placeholder.com/30.png" alt="confetti">
+        <!-- Add more confetti images as needed -->
+    </div>
 
     <div id="wrapper">
-        <h1>Number guessing game</h1>
-        <p>Try and guess a random number between 1 and 100.</p>
-        <p>You have 10 attempts to guess the right number.</p>
-        </br>
-        <form class="form">
-            <label2 for="guessField" id="guess">Guess a number</label>
-                <input type="text" id="guessField" class="guessField">
-                <input type="submit" id="submit" value="Submit guess" class="guessSubmit">
-        </form>
+        <h1>Number Guessing Game</h1>
+        <p class="description">Can you guess the random number between 1 and 100?</p>
+        <div class="difficultySelection">
+            <label for="difficultySelection">Choose a difficulty:</label>
+            <div class="radioButtons">
+                <input type="radio" id="easy" name="difficulty" value="10" checked>
+                <label for="easy">Easy</label>
 
-        <div class="resultParas">
-            <p>Previous Guesses : <span class="guesses"></span></p>
-            <p>Guesses Remaining : <span class="lastResult">10</span></p>
-            <p class="lowOrHi"></p>
+                <input type="radio" id="medium" name="difficulty" value="7">
+                <label for="medium">Medium</label>
+
+                <input type="radio" id="hard" name="difficulty" value="5">
+                <label for="hard">Hard</label>
+            </div>
+        </div>
+        <button id="startGameBtn" class="startGameBtn" type="button">Start Game</button>
+        <div id="hideGame" class="hidden">
+            <p>You have <span id="totalAttempt">10</span> attempts remaining.</p>
+            <form class="form">
+                <label for="guessField" id="guess">Enter your guess:</label>
+                <input type="text" id="guessField" class="guessField">
+                <input type="submit" id="submit" value="Submit" class="guessSubmit">
+            </form>
+
+            <div class="resultParas">
+                <p class="previousGuess">Previous Guesses: <span class="guesses"></span></p>
+                <p class="remainingGuess">Remaining Attempts: <span class="lastResult">10</span></p>
+                <p class="lowOrHi"></p>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
