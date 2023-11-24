@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+    <script>
+        // 1. direct onclick
+        // this is not scalable approach - in js
+        // on click give less info - feature
+        // document.getElementById('owl').onclick = (e) => {
+        //     alert('owl clicked');
+        // }
+
+        // 2. eventlistener - eventPropagation
+        // it's take thirs paramerter also default - false.
+        // 3rd param is - eventPropagation
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //     alert('owl clicked again');
+        // })
+
+        // 3. attachEvent()
+        // 4. jQuery on
+
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //     // alert('owl clicked again');
+        //     console.log(e); // give lots of info
+        // },false);
+        // give info like
+        /*
+        type,timestamp,preventDefault,
+        target,toElement,srcElement,currTarget
+        clientX,clientY,screenX,screenY
+        */
+
+        // diff or true & false - bubbling & capturing ToptoBottom
+        // when it's false it like bubbling going from child to parent
+        // when clicked owl
+        //output - owl -> inside ui
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //     console.log('owl clicked');
+        //     }, false);
+
+        // document.getElementById('images').addEventListener('click',(e) => {
+        //     console.log('inside the ul clicked');
+        // },false);
+
+        // top to bottom when true
+
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //         console.log('owl clicked');
+        //     }, true);
+
+        // document.getElementById('images').addEventListener('click', (e) => {
+        //         console.log('inside the ul clicked');
+        //     }, true);
+
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //         console.log('owl clicked');
+        //         //we can prevent it also
+        //         e.stopPropagation();
+        //     }, false);
+
+        // document.getElementById('images').addEventListener('click', (e) => {
+        //         console.log('inside the ul clicked');
+        //     }, false);
+
+        // document.getElementById('google').addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     console.log('googled clicked but navigate stopped.')
+        // },false)
+
+        // document.querySelector('#images').addEventListener('click' , (e) => {
+        //     // console.log(e.target);// it's give img so parent
+        //     console.log(e.target.parentNode);
+
+        //     // now we want to remove that
+        //     let rmv = e.target.parentNode;
+        //     rmv.remove();
+        // })
+
+        // now we only want to remove img not li
+
+        document.querySelector('#images').addEventListener('click',(e) => {
+            console.log(e.target.tagName);
+            if(e.target.tagName === 'IMG'){
+                e.target.parentNode.remove();
+            }
+        })
+    </script>
+</body>
+</html>
