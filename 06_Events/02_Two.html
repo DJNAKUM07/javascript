@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout & clearTimeOut</title>
+</head>
+<body>
+    <h1>setTimeout & clearTimeOut</h1>
+    <button id="stop">stop</button>
+    <h2>setInterval & clearInterval</h2>
+    <button id="startInterval">start Interval</button>
+    <button id="stopInterval">clear Interval</button>
+
+    <script>
+        const sayDJ = function(){
+            console.log('DJ');
+        }
+
+        // this call fn that we give as a reference after the time we said. - one time;
+        setTimeout(sayDJ,2000); // take fn reference
+
+        // let's change chai or code
+        const changeText = function (){
+            document.querySelector('h1').innerHTML = 'Hello DJ !!!';
+        }
+         const stop = setTimeout(changeText, 2000);
+         console.log(stop)
+
+        // now we want to stop that | want to clear that time interval 
+        // when we click before 2 sec then it's clear
+        // setTimeout fn & it's never call
+
+        document.querySelector('#stop').addEventListener('click' , () =>{
+            console.log('clearTimeOut');
+            clearTimeout(stop);
+        })
+
+        //  print date when click on start
+
+        const sayDate = function(str){
+            // console.log(str,Date.now());
+            const date = new Date();
+            console.log(str, date.toLocaleTimeString('en-IN'));
+        }
+        var IntervalID = 0;
+
+         document.querySelector('#startInterval').addEventListener('click', () => {
+            console.log('start Interval Clicked')
+            IntervalID = setInterval(sayDate, 1000, 'DJ ');
+        })
+
+        document.querySelector('#stopInterval').addEventListener('click' , () =>{
+            clearInterval(IntervalID);
+            console.log('stop Interval Clicked')
+        })
+    </script>
+</body>
+</html>
