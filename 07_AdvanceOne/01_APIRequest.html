@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request with old Method XML</title>
+    <style>
+       .card {
+            box-shadow: 2px 4px 8px 0 yellow;
+            max-width: 300px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color: #212121;color: #ffffff;">
+    <h1>API Request with old Method xmlhttprequest</h1>
+    <table border="1">
+        <tr>
+            <td>val</td>
+            <td>status</td>
+            <td>description</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>UNSENT</td>
+            <td>Client has been created. open() not called yet.</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>OPENED</td>
+            <td>open() has been called.</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>HEADERS_RECEIVED</td>
+            <td>send() has been called, and headers and status are available.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>LOADING</td>
+            <td>Downloading; responseText holds partial data.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>DONE</td>
+            <td>The operation is complete.</td>
+        </tr>
+    </table>
+    <h2 class="card">user info from api</h2>
+<script>
+    const requesturl = 'https://api.github.com/users/DJNAKUM07';
+    const requesturl1 = 'https://api.github.com/users/hiteshchoudhary';
+
+    getInfoFromGivenRequesturl(requesturl);
+    getInfoFromGivenRequesturl(requesturl1);
+
+    // const xhr = new XMLHttpRequest();
+    // console.log(xhr.readyState); // unsend
+    // xhr.open('GET',requesturl);
+    // console.log(xhr.readyState); // open
+    // xhr.onreadystatechange = function(){
+    //     console.log(xhr.readyState); // headerReceived , load , done
+
+    //     // now when we reach at done status then we need 
+    //     // to do something
+
+    //     if(xhr.readyState === 4){
+    //         // this for current context
+    //         console.log(this.responseText); 
+    //         // so this is data that come from api 
+    //         // remember the type string or object
+
+    //         const data = JSON.parse(this.responseText);
+    //         // now get user name from data
+
+    //         console.log(data.name);
+
+    //         // now we want to make a card
+    //         // get img,name,login,id from this api & show it
+    //         // setInfoInCard(data.avatar_url,data.name,data.login,data.id);
+    //     }
+    // }
+    // xhr.send();
+
+    function getInfoFromGivenRequesturl(requesturl){
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET',requesturl);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                const data = JSON.parse(this.responseText);
+                setInfoInCard(data.avatar_url, data.name, data.login, data.id);
+            }
+        }
+        xhr.send();
+    }
+
+    function setInfoInCard(imgurl,name,login,id){
+        const divcard = document.createElement('div');
+        divcard.className = 'card';
+        
+        const img = document.createElement('img');
+        img.src = imgurl;
+        img.alt = name;
+        img.style.width = '100%';
+        divcard.appendChild(img);
+
+        const h1 = document.createElement('h1');
+        h1.innerHTML = name;
+
+        divcard.appendChild(h1);
+        const p1 = document.createElement('p1');
+        p1.innerHTML = `id :- ${id}, login :- ${login}`;
+
+        divcard.appendChild(p1);
+        document.body.appendChild(divcard);
+    }
+</script>
+</body>
+</html>
